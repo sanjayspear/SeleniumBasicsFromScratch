@@ -1,0 +1,247 @@
+------------------Locators---------------------
+Locators are most important thing in selenium, because in any automation tool locators will tell you how to intract with specfic web object or web component like how to click on a button, how to click on link, how to select any option from dropdown, how to enter something in text fields ... etc. Hence, any time you want to intract with web element or web object then that case we have to use locators.So, selenium intracts with web objects or elements (i.e. button, links, dropdown, etc ...) with the help of locators.
+
+Different types of locators as follows:
+
+        driver.findElement(By.className(""));
+		driver.findElement(By.cssSelector(""));
+		driver.findElement(By.id(""));
+		driver.findElement(By.linkText(""));
+		driver.findElement(By.name(""));
+		driver.findElement(By.partialLinkText(""));
+		driver.findElement(By.tagName(""));
+		driver.findElement(By.xpath(""));
+
+Where,
+
+      By is a class and classNmae(), cssSelector(), id(), etc ... are methods available in the By class.
+
+Q. What findElement() method returns?
+--> findElement() method returns WebElement.
+
+    //id:
+    Ex-1 WebElement userName = driver.findElement(By.id("login-username")).sendKeys("Sagar");
+
+    //name:
+    Ex-2 WebElement userName = driver.findElement(By.name("username")).sendKeys("Sanjay");
+    Ex-3 WebElement signButton = driver.findElement(By.name("signin")).click();
+
+    //xpath:
+    Ex-4 WebElement loginButton = driver.findElement(By.xpath("//input[contains(@value,'Login')]")).click();
+
+    //cssSelector:
+    Ex-5 WebElement url = driver.findElement(By.cssSelector("#login-username")).sendKeys("https://wwww.yahoo.com");
+    Ex-6 WebElement loginButton = driver.findElement(By.cssSelector("#login-signin")).click();
+
+    //linkText: Explictly for links only
+    Ex-7 WebElement linkText = driver.findElement(By.linkText("Trouble signing in")).click();
+
+    //partiaLinkText: Explictly for links only
+    Ex-8 WebElement linkText = driver.findElement(By.partialLinkText("Trouble")).click();
+
+    //className
+    Ex-9 WebElement textField= driver.findElement(By.className("phone-no")).sendKeys("8904585630");
+
+Q. How totally howmany locators available in selenium?
+--> 8 locators: id, name, className, linkText, partialLinkText, tagName, cssSelector, xapth.	
+    
+
+
+
+------------------Xpath for user name and password---------------       
+
+//input[@name="username"] or //input[contains(@name,'username')]
+//input[@name='password'] or //input[contains(@name,'password')]
+
+-------------------Xpath for Login Button------------------
+
+//input[@type='submit']  or //input[contains(@type,'submit')] --recommended
+//input[@value='Login'] or //input[contains(@value,'Login')]
+
+---------Xpath for login using multiple attribute----------
+
+//input[@value='Login' and @type='submit']
+
+---------Xpath for links-----------
+//a[text()='Features']
+
+NOTE: text() is a funtion not an attribute hence we cannot write @.
+
+----------Xpath for Alerts Link------------
+//a[text()='Alerts'] or //a[contains(text(), Alerts) and contains(@title, 'Alerts')]
+
+-----------Finding checkbox using parent and sibling concepts--------------
+//a[text()='Sagar YM']//parent::td[@class='datalistrow']//preceding-sibling::td[@class='datalistrow']//input[@type='checkbox']
+
+//a[text()='Why actiTIME']/parent::li/parent::*/child::li[1]  ----> astrisk(*) : indicates common parent for all childern
+
+NOTE: following-sibling and preceding-sibling concepts can be helpful only if objects come under same parent.
+
+Ex- <ul>
+        <li>.....</li>
+        <li>.....</li>
+        <li>.....</li>
+        <li>.....</li>
+    </ul>
+
+where,
+     ul -> is the commom parent of all children (sibling)
+
+     -------------------following-sibling concepts-------------------------
+     //a[contains(text(), 'Features')]/parent::li/following-sibling::li[1]/a
+     //a[contains(text(), 'Features')]/parent::li/following-sibling::li[2]/a
+     //a[contains(text(), 'Features')]/parent::li/following-sibling::li[3]/a
+     //a[contains(text(), 'Features')]/parent::li/following-sibling::li[4]/a
+
+     -------------------preceding-sibling concepts---------------------------
+     //a[contains(text(), 'Help Center')]/parent::li/preceding-sibling::li[1]/a
+     //a[contains(text(), 'Help Center')]/parent::li/preceding-sibling::li[2]/a
+     //a[contains(text(), 'Help Center')]/parent::li/preceding-sibling::li[3]/a
+     //a[contains(text(), 'Help Center')]/parent::li/preceding-sibling::li[4]/a
+
+     ---------------------starts-with--------------------
+       //input[starts-with(@name,’btn’)
+       //input[starts-with(@name,’btnK’)]
+
+     ---------------------ends-with-----------------------
+      //input[ends-with(@id,'_PHONE$1'] 
+
+Q. Why we use preceding-sibling, following-sibling, ancestor, decedent concepts while forming xpath?
+--> We use above specified concepts in cases if we do not able to locate any element directly then we go and find the object of its parent or child then from that point we will traverse back/farward based on preceding-sibling or following-sibling or ancestor or decedent concepts.
+
+Q. What is sibling of common parent means?
+-->If any html tag for example <ul> is having multiple childs (i.e. <li>, <li>, <li> ... etc) then <ul> is treated as common parent for all <li> siblings. Then you can 
+    use preceding-sibling concept if you want traverse from elder-sibling to younger sibing and similar way you can also use following-sibling concept if you want to     traverse from younger sibling to elder-sibling.
+
+Q. What are the d/f cocepts which are being used during xpath creation in order to locate webpage elements?
+--> parent, child, following-sibling, preceding-sibling, ancestor, descendant, starts-with(), ends-with(), contains() are the concepts which are bening used during creation of xpath.
+
+-----------------------CSS Selector--------------------------
+Q- What is the main difference between xpath and css Selector?
+--> 1. CSS is faster as campare to xpath.
+    2. CSS will not change based on browser (i.e. browser to browser).
+    
+
+Q- Symbol used while writing  CSS selector in selenium Webdriver?
+--> 1. For id attribute : use#symbol
+    2. For class name attribute : use.symbol
+    3. Using attribute : tagname[attribute='value']
+    4. Using multiple attribute : tagname[attribute='value1']tagname[attribute='value1']
+    5. Contains : *symbol
+    6. Starts with : ^symbol
+    7. Ends with : $symbol
+
+--------CSS Selector Examples---------
+ -------Single Attribute------
+1. input[class='input']
+
+ -------Multiple Attribute----
+2. input[class='input'][class='login'] 
+3. input[class='input'][class='pwd']
+
+--------Using CSS symbol--------
+1. a.main-menu__link --> a[class='main-menu__link']
+2. input#first-name  --> input[id='first-name']
+
+--------CSS Selector with symbols-----------
+1.input[id*='first-']
+2.input[name*='emailAdd'] 
+3.input[name^='first'] 
+4.[id$='-name']
+5.input[name^='first'][id$='-name']
+
+--------Some of the difference between CSS Selector and xpath-------------
+
+XPath: //div/a
+CSS: div > a
+
+XPath: //div//a
+CSS: div a
+
+XPath: //div[@id='example']
+CSS: #example
+
+XPath: //div[@class='example']
+CSS: .example
+
+---Advance:
+
+XPATH: //input[@id='username']/following-sibling::input[1]
+CSS: #username + input
+
+XPATH: //input[@name='username']
+CSS: input[name='username']
+
+XPATH: //input[@name='login'and @type='submit']
+CSS: input[name='login'][type='submit'] 
+
+-----------Choosing a specific match-----------------
+
+CSS selectors in Selenium allow us to navigate lists with more finess that the above methods. If we have a ul and we want to select its fourth li element without regard to any other elements, we should use nth-child or nth-of-type.
+
+
+<ul id = "recordlist">
+   <li>Cat</li>
+   <li>Dog</li>
+   <li>Car</li>
+   <li>Goat</li>
+</ul>
+
+1. If we want to select the fourth li element (Goat) in this list, we can use the nth-of-type, which will find the fourth li in the list:
+
+CSS: #recordlist li:nth-of-type(4)
+
+2. On the other hand, if we want to get the fourth element only if it is a li element, we can use a filtered nth-child which will select (Car) in this case:
+
+CSS: #recordlist li:nth-child(4)
+
+3. Note, if you don’t specify a child type for nth-child it will allow you to select the fourth child without regard to type. This may be useful in testing css layout: in selenium.
+
+CSS: #recordlist *:nth-child(4)
+
+----------Sub-string matches-----------
+
+CSS in Selenium has an interesting feature of allowing partial string matches using ^=, $=, or *=. I’ll define them, then show an example of each:
+
+1. A link with an “id” that starts with the text “id_prefix_”
+
+CSS: a[id^='id_prefix_']
+
+2. A link with an “id” that ends with the text “_id_sufix”
+
+CSS: a[id$='_id_sufix']
+
+3. A link with an “id” that contains the text “id_pattern”
+
+CSS: a[id*='id_pattern']
+
+
+-----------------------------------------------------------------------------------------------
+
+//table[@class='ui-datepicker-calendar']/ancestor::div/descendant::span[text()='February']//ancestor::div[2]/following-sibling::table/descendant::td
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
