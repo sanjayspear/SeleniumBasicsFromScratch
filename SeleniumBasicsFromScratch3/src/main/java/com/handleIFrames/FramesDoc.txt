@@ -1,0 +1,16 @@
+Q-1 What are frames?
+-> Frames are the components which are hosted on the web pages.
+
+Q-2 How to identify  frames in application?
+-> Through right click if you find "This Frame" then that component is in frame.
+
+Q-3 How to handle frames?
+
+
+Q-4 Best practices when working with frames?
+
+Q-4 Different form of switching frame?
+-> 1d, string, web element.
+
+
+

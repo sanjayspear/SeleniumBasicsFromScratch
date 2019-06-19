@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="7061" started-at="2019-05-29T18:21:15Z" finished-at="2019-05-29T18:21:22Z">
+  <suite name="Default suite" duration-ms="26410" started-at="2019-06-18T09:11:26Z" finished-at="2019-06-18T09:11:52Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="7061" started-at="2019-05-29T18:21:15Z" finished-at="2019-05-29T18:21:22Z">
-      <class name="com.seleniumPractice2.DatePicker">
-        <test-method status="PASS" signature="dateTimePicker()[pri:0, instance:com.seleniumPractice2.DatePicker@5700d6b1]" name="dateTimePicker" duration-ms="7033" started-at="2019-05-29T18:21:15Z" finished-at="2019-05-29T18:21:22Z">
+    <test name="Default test" duration-ms="26410" started-at="2019-06-18T09:11:26Z" finished-at="2019-06-18T09:11:52Z">
+      <class name="com.seleniumPractice2.OpenNewTab">
+        <test-method status="PASS" signature="autoSuggest()[pri:0, instance:com.seleniumPractice2.OpenNewTab@5700d6b1]" name="autoSuggest" duration-ms="26374" started-at="2019-06-18T09:11:26Z" finished-at="2019-06-18T09:11:52Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- dateTimePicker -->
-      </class> <!-- com.seleniumPractice2.DatePicker -->
+        </test-method> <!-- autoSuggest -->
+      </class> <!-- com.seleniumPractice2.OpenNewTab -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

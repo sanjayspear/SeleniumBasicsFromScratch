@@ -1,8 +1,9 @@
 package com.seleniumPractice2;
 
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
@@ -22,7 +23,7 @@ public class OpenNewTab {
 		
 		driver.get("https://www.google.com");
 		
-		//driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
 		
 		/*ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
